@@ -1,7 +1,30 @@
+// fn main() {
+//     let passwd = String::from("Hello, world!");
+
+//     // Introducing & references to allow us to pick the 
+//     // value but not acquire ownership of it
+//     // The action of creating a reference is what is called borrowing
+//     let passwd_length:usize = calculate_length(&passwd);
+
+//     println!("Password length: {passwd_length}");
+// }
+
+// fn calculate_length(str: &String) -> usize {
+//     str.len()
+// }
+
+fn change(s: &mut String) {
+    s.push_str(", world!");
+}
+
 fn main() {
-    let s1 = String::from("Hello");
+    let mut s = String::from("Hello");
 
-    let s2 = s1;
+    change(&mut s);
 
-    println!("{}, world", s1);
+    println!("{s}")
+
+    // One big restriction with mutables is that you can have only one 
+    // mutable reference to a value, anything more than one leadeth to
+    // E0499
 }
